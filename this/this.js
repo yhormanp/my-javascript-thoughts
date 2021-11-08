@@ -71,6 +71,23 @@ this is undefined in a function invocation in strict mode
 // myDog.name = 'milo';
 // console.log(myDog.sayName()); // milo
 
+// // another example
+
+// const object = {
+//   message: 'Hello world',
+
+//   getMessage() {
+//     const message = 'Hello Earth';
+//     console.log(message) // hello Earth
+//     return this.message;
+//   }
+// }
+
+// console.log(object.getMessage()) // hello world
+/*
+  object.getMessage() is a method invocation, that’s why this inside the method equals object.
+*/
+
 
 // SEPARATING METHODS FROM IT'S OBJECT
 
@@ -140,7 +157,7 @@ an open parenthesis (, a comma separated list of arguments expressions and a clo
 // console.log(fooInstance.property); // 'Default value'
 
 /*
-The same scenario happens when using class syntax (available in ES2015), 
+The same scenario happens when using class syntax (available in ES2015),
 only the initialization happens in the constructor method:
 */
 
@@ -157,7 +174,7 @@ only the initialization happens in the constructor method:
 
 // FORGETTING ABOUT NEW IN THE CONSTRUCTOR INVOCATION
 /*
-Using a function invocation to create objects is a potential problem (excluding factory pattern), 
+Using a function invocation to create objects is a potential problem (excluding factory pattern),
 because some constructors may omit the logic to initialize the object when new keyword is missing.
 */
 
@@ -286,17 +303,17 @@ The following code creates a bound function and later invokes it:
 /*
 Arrow function is designed to declare the function in a shorter form and lexically bind the context.
 this is the enclosing context where the arrow function is defined
-t doesn’t provide the arguments object, opposed to a regular function. 
+t doesn’t provide the arguments object, opposed to a regular function.
 The missing arguments is fixed using ES2015 rest parameters:
 */
 
-// basic example
-var myArrowFunction = () => {
-  console.log(this); // global or window object
-  return this;
-}
+// // basic example
+// var myArrowFunction = () => {
+//   console.log(this); // global or window object
+//   return this;
+// }
 
-myArrowFunction();
+// myArrowFunction(); // this is global
 
 
 // another example
@@ -320,24 +337,24 @@ myArrowFunction();
 // user.foo2() // (arrow function) return global / window object
 
 
-// another example
-class Point {
-  constructor(x, y ){
-    this.x = x;
-    this.y  = y;
-  }
+// // another example
+// class Point {
+//   constructor(x, y ){
+//     this.x = x;
+//     this.y  = y;
+//   }
 
-  log() {
-    console.log(this === myPoint) // true
-    setTimeout(() => {
-      console.log(this === myPoint) // true
-      console.log(this.x + ':' + this.y) // 95:165
-    }, 1000);
-  }
-}
+//   log() {
+//     console.log(this === myPoint) // true
+//     setTimeout(() => {
+//       console.log(this === myPoint) // true
+//       console.log(this.x + ':' + this.y) // 95:165
+//     }, 1000);
+//   }
+// }
 
-const myPoint = new Point ( 95,165);
-myPoint.log()
+// const myPoint = new Point ( 95,165);
+// myPoint.log()
 
 
 
