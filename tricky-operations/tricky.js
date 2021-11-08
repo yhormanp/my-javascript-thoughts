@@ -255,23 +255,80 @@ pushing 4 + 1 to numbers array.
 // **************************************
 // What happens if you access myVar and myConst before declaration?
 
-myVar;   // => ??? // hoisting is applied to  declare var variables at the top 
-myConst; // => ??? // referenceError: cannot access myConst
-var myVar = 'value';
-const myConst = 3.14;
+// myVar;   // => ??? // hoisting is applied to  declare var variables at the top 
+// myConst; // => ??? // referenceError: cannot access myConst
+// var myVar = 'value';
+// const myConst = 3.14;
+
+
+// **************************************
+// Delayed greetings
+
+// What logs to console the following code snippet:
+
+// const object = {
+//   message: 'Hello, World!',
+//   logMessage() {
+//     console.log(this.message); // What is logged?  R: // undefined
+//   }
+// };
+// setTimeout(object.logMessage, 1000);
+
+/*
+    While setTimeout() function uses the object.logMessage as a callback, still, 
+    it inovkes object.logMessage as a regular function, rather than a method.
+    This will give to THIS, the value of undefined ( FUNCTION INVOCATION)
+
+*/
+
+
+// **************************************
+// Artificial Method
+
+// //How can you call logMessage function so that it logs "Hello, World!"?
+// const object = {
+//     message: 'hello world'
+// }
+
+// function logMessage() {
+//     console.log(this.message) // Hello world
+// }
+// // Answer
+// // Using func.call() method
+// logMessage.call(object);
+// // Using func.apply() method
+// logMessage.apply(object);
+// // Creating a bound function
+// const boundLogMessage = logMessage.bind(object);
+// boundLogMessage();
 
 
 // **************************************
 
+// // Greeting and farewell
+// // What logs to console the following code snippet:
 
-
-// **************************************
-
-
-
-// **************************************
-
-
+const object = {
+  who: 'World',
+  greet() {
+    return `Hello, ${this.who}!`;
+  },
+  farewell: () => {
+    return `Goodbye, ${this.who}!`;
+  },
+  farewell2 () {
+      const val = () => `Goodbye, ${this.who}!`;
+      return val();
+  }
+};
+console.log(object.greet());    // What is logged? R: Hello World
+console.log(object.farewell()); // What is logged? R: Goodbye undefined
+console.log(object.farewell2()) ; // What is logged? R: Goodbye undefined
+/* 
+When calling object.greet(), inside the method greet() this value equals object because greet is a regular function.
+Thus object.greet() returns 'Hello, World!'.
+But farewell() is an arrow function, so this value inside of an arrow function always equals this of the outer scope.
+*/
 // **************************************
 
 
