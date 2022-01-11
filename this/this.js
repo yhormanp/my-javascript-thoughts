@@ -442,3 +442,33 @@ The following example defines Pet constructor and makes an instance of it: myCat
 
 Unfortunately the method is separated from its object when passed as a parameter: setTimout(myCat.logInfo).
 */
+
+// guess the outpu of the following code
+const a = function(){
+  console.log(this); //global/window 
+
+  const b = {
+    func1: function(){
+      console.log(this);
+    }  
+  }
+
+  const c = {
+    func2: ()=>{
+      console.log(this);
+    }
+  }
+
+  b.func1(); //b
+  c.func2(); //global/window
+}
+
+a();
+
+/* 
+global/window object
+object "b"
+global/window object
+
+Since we are using arrow function inside func2, this keyword refers to the global object.
+*/

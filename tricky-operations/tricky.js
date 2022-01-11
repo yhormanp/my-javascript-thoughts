@@ -19,7 +19,6 @@
 
 // func ()
 
-
 // **************************************
 // console.log( 5 < 6 < 7); // true
 // // step 1 , 5 is less than 6, true
@@ -35,10 +34,9 @@
 // let b = function (){ return arguments }; // nothing is returned because  arguments cannot be used insde an arrow function
 // console.log('arguments with b', b('hi')); // list of arguments is retured because arguments exists inside a function definition
 
-
 // **************************************
 // let  x = function (){
-//     return 
+//     return
 //     {
 //         message: 'hi'
 //     }
@@ -52,7 +50,6 @@
 //     }
 // }
 // console.log(xx()); // receives the object with the property message
-
 
 // **************************************
 // console.log([] + []) // returns an empty string, because it will try to convert the empty array to string,
@@ -78,10 +75,9 @@
 //     }
 // }
 
-// x.method(y, 1) 
+// x.method(y, 1)
 /* it returns 2, because it has the context where it was executed it means arguments, so the sentence, 
 this.length is the length of properties on arguments, not the property length of the object x*/
-
 
 // **************************************
 
@@ -148,8 +144,6 @@ A.x().y().z(); // it returns xyz
 
 */
 
-
-
 // **************************************
 // // 2.toString() // this will raise a Invalid or unexpected token
 // console.log(2..toString()); // the second point is correctly recognized
@@ -158,8 +152,8 @@ A.x().y().z(); // it returns xyz
 // **************************************
 
 // Deleting Properties
-// The only way to remove a property from an object is to use the delete operator; 
-// setting the property to undefined or null only removes the value associated with the property, 
+// The only way to remove a property from an object is to use the delete operator;
+// setting the property to undefined or null only removes the value associated with the property,
 // but not the key.
 
 // var obj = {
@@ -192,7 +186,6 @@ A.x().y().z(); // it returns xyz
 // console.log(typeof a); // undefined
 // console.log(typeof b); // number
 
-
 // **************************************
 // const clothes = ['jacket', 't-shirt'];
 // clothes.length = 0;
@@ -213,7 +206,6 @@ whose array index is between the old and new length values
 // }
 // numbers; // => 5
 
-
 /* due to the ; right befor the open brackets in the for sentence, 
 The null statement is an empty statement that does nothing.
 for() iterates 4 times over the null statement (that does nothing), 
@@ -230,7 +222,6 @@ pushing 4 + 1 to numbers array.
 // }
 // arrayFromValue(10); // => undefined
 
-
 // **************************************
 
 // What will output to console the following code:
@@ -243,9 +234,8 @@ pushing 4 + 1 to numbers array.
 //   setTimeout(log, 100);
 // }
 
-
- // the output is 3 3 3
- // review the solution here, question 5,  related to closures (https://dmitripavlutin.com/simple-but-tricky-javascript-interview-questions/)
+// the output is 3 3 3
+// review the solution here, question 5,  related to closures (https://dmitripavlutin.com/simple-but-tricky-javascript-interview-questions/)
 // **************************************
 
 // What’s the result of the equality check?
@@ -255,11 +245,10 @@ pushing 4 + 1 to numbers array.
 // **************************************
 // What happens if you access myVar and myConst before declaration?
 
-// myVar;   // => ??? // hoisting is applied to  declare var variables at the top 
+// myVar;   // => ??? // hoisting is applied to  declare var variables at the top
 // myConst; // => ??? // referenceError: cannot access myConst
 // var myVar = 'value';
 // const myConst = 3.14;
-
 
 // **************************************
 // Delayed greetings
@@ -281,7 +270,6 @@ pushing 4 + 1 to numbers array.
 
 */
 
-
 // **************************************
 // Artificial Method
 
@@ -302,35 +290,114 @@ pushing 4 + 1 to numbers array.
 // const boundLogMessage = logMessage.bind(object);
 // boundLogMessage();
 
-
 // **************************************
 
 // // Greeting and farewell
 // // What logs to console the following code snippet:
 
-const object = {
-  who: 'World',
-  greet() {
-    return `Hello, ${this.who}!`;
-  },
-  farewell: () => {
-    return `Goodbye, ${this.who}!`;
-  },
-  farewell2 () {
-      const val = () => `Goodbye, ${this.who}!`;
-      return val();
-  }
-};
-console.log(object.greet());    // What is logged? R: Hello World
-console.log(object.farewell()); // What is logged? R: Goodbye undefined
-console.log(object.farewell2()) ; // What is logged? R: Goodbye undefined
+// const object = {
+//   who: 'World',
+//   greet() {
+//     return `Hello, ${this.who}!`;
+//   },
+//   farewell: () => {
+//     return `Goodbye, ${this.who}!`;
+//   },
+//   farewell2 () {
+//       const val = () => `Goodbye, ${this.who}!`;
+//       return val();
+//   }
+// };
+// console.log(object.greet());    // What is logged? R: Hello World
+// console.log(object.farewell()); // What is logged? R: Goodbye undefined
+// console.log(object.farewell2()) ; // What is logged? R: Goodbye undefined
 /* 
 When calling object.greet(), inside the method greet() this value equals object because greet is a regular function.
 Thus object.greet() returns 'Hello, World!'.
 But farewell() is an arrow function, so this value inside of an arrow function always equals this of the outer scope.
 */
 // **************************************
+/*
+What is a potential pitfall with using typeof bar === "object" to determine if bar is an object? 
+How can this pitfall be avoided?
+*/
 
+//in Javascript null is also considered an object
+// var bar = null;
+// console.log(typeof bar === "object") // true
 
+// // to avoid this, add a new validation to detect if bar is !== null
+// console.log((bar !== null) && (typeof bar === "object"));  // logs false
+
+// **************************************
+//what is the output in the console
+// (function (){
+//     var a = b = 3;
+// })()
+
+// console.log("a defined? " + (typeof a !== 'undefined')); // a defined false
+// console.log("b defined? " + (typeof b !== 'undefined')); // b defined true
+
+/*
+var a = b = 3; is shorthand for the statements b = 3; and var a = b;, b ends up being a global variable 
+(since it is not preceded by the var keyword) and is therefore still in scope even outside of the enclosing function.
+*/
+
+// **************************************
+// differences between method invocation and function invocation ( to understand the value of THIS)
+// var myObject = {
+//     foo: 'bar',
+//     func: function (){
+//         var self = this; // func was called using method invocation, so THIS is myObject
+//         console.log("outer func:  this.foo = " + this.foo); // outer func:  this.foo = bar
+//         console.log("outer func:  self.foo = " + self.foo); // outer func:  self.foo = bar
+//         (function () {
+//             // this IIFE executes as a function invocation, so THIS is the global object
+//             console.log("inner func:  this.foo = " + this.foo); // inner func:  this.foo = undefined
+//             console.log("inner func:  self.foo = " + self.foo); // inner func:  self.foo = bar
+//         })()
+//     }
+// }
+
+// myObject.func() // calling as a method invocation (Here THIS will be object before the . it mean, myObject)
+
+// **************************************
+
+// guess the ouput of the following operation
+
+var x = 23;
+
+function validX() {
+  var x = 43;
+  console.log("hola soy x en validX", x); // 43 x it has function scope
+}
+
+(function () {
+  var x = 11;
+  console.log("hola soy x", x); // 11, X it has function scope
+})();
+
+(function () {
+  var x = 11;
+
+  (function random() {
+    x++;
+    console.log("hola soy x de nuevo", x); // NaN , random() function has functional scope, since x is declared and hoisted in the functional scope.
+    var x = 21;
+  })();
+})();
+
+validX();
+// **************************************
+
+// **************************************
+
+// **************************************
+
+// **************************************
+
+// **************************************
+
+// **************************************
 
 // **************************************
