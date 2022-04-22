@@ -30,7 +30,7 @@ let grouped = cars.reduce( (group, currentValue) =>{
     // group[currentValue.make] = group[currentValue.make] ? [...group[currentValue.make], currentValue ]: [currentValue]
     group[currentValue.make] = [...group[currentValue.make] || [], currentValue]
     return group
-},{})
+},[])
 
 console.log('grouped', grouped)
 
