@@ -1,0 +1,36 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: lightskyblue;
+    width: 40%;
+    margin: auto;
+}
+.timer-section{
+    display: flex;
+    justify-content: center;
+    width: 35%;
+    background-color: white;
+    border-radius: 4%;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 5px black;
+}
+.buttons{
+    width: 90%;
+    margin: 20px auto 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+.buttons button{
+    width: 120px;
+    height: 45px;
+    background-color: #205e94;
+    color: #ffffff;
+    border: none;
+    font-family: 'Poppins',sans-serif;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}

@@ -1,6 +1,7 @@
 /*
 
-•Create a JS function that receives a string of length N and compress it by grouping repeated characters.
+•Create a JS function that receives a string of length N and compress it by 
+grouping repeated characters.
 
 •
 

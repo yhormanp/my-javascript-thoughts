@@ -33,3 +33,5 @@ function urlSlug(title) {
   
   }
   // Only change code above this line
+
+  console.log(urlSlug('Winter Is Coming'))

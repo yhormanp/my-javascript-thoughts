@@ -123,4 +123,73 @@
 
 //---------------------------
 
-const data = ["UPS": [{"id": 3}]];
+// let input = [
+//     { name: "John", age: 21, city: "New York" },
+//     { name: "Mike", age: 28, city: "Moscow" },
+//     { name: "Danny", age: 30, city: "London" },
+//     { name: "Lisa", age: 26, city: "Paris" },
+//     { name: "Sophie", age: 19, city: "Berlin" },
+//   ];
+
+// function extractValues (arr) {
+//     return arr.map((info) => info.name);
+// }
+
+// console.log(extractValues(input))
+
+// -------------------------
+const listOfroles = {
+  admin: "admin",
+  readOnly: "readonly",
+};
+
+const objUser = {
+  roles: ["admin", "rolx2"],
+};
+
+const menuOptions = {
+  manageCarrierCapsReadOnly: {
+    name: "Manage Carrier Caps",
+    url: "/report/readonly",
+    // renderingMethod: ManageCarrierCapsReadOnlyLink,
+    allowedRoles: [listOfroles.readOnly],
+  },
+  manageCarrierCapsAdmin: {
+    name: "Manage Carrier Caps",
+    url: "/report/admin",
+    // renderingMethod: ManageCarrierCapsAdminLink,
+    allowedRoles: [listOfroles.admin],
+  },
+  supportedCarriers: {
+    name: "Supported carriers",
+    url: "/report/supportedCarriers",
+    // renderingMethod: StoreSupportedCarriersLink,
+    allowedRoles: [listOfroles.admin, listOfroles.readOnly],
+  },
+  parcelDetails: {
+    name: "Parcel Details",
+    url: "/parcel-details",
+    // renderingMethod: ParcelDetailsLink,
+    allowedRoles: [ listOfroles.readOnly],
+  },
+  deliverySearch: {
+    name: "Search Package Delivery",
+    url: "/delivery-search",
+    // renderingMethod: DeliverySearchLink,
+    allowedRoles: [listOfroles.admin, listOfroles.readOnly],
+  },
+};
+
+function validateRoles(user, menu) {
+  const allowed = Object.keys(menu).map((option) => {
+    // console.log ('check', menu[option])
+
+     return menu[option].allowedRoles.some((role) => {
+      return user.roles.includes(role);
+    });
+  });
+
+  console.log('allowed links', allowed)
+}
+
+validateRoles(objUser, menuOptions);
