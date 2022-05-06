@@ -1,5 +1,6 @@
 /*
-Find  the closest vowel, if it’s a vowel return the vowel, if it’s a the same distance that 2 vowels, 
+Find  the closest vowel, if it’s a vowel return the vowel, 
+if it’s a the same distance that 2 vowels, 
 just return the earlier vowel
 */
 
