@@ -365,39 +365,95 @@ var a = b = 3; is shorthand for the statements b = 3; and var a = b;, b ends up 
 
 // guess the ouput of the following operation
 
-var x = 23;
+// var x = 23;
 
-function validX() {
-  var x = 43;
-  console.log("hola soy x en validX", x); // 43 x it has function scope
+// function validX() {
+//   var x = 43;
+//   console.log("hola soy x en validX", x); // 43 x it has function scope
+// }
+
+// (function () {
+//   var x = 11;
+//   console.log("hola soy x", x); // 11, X it has function scope
+// })();
+
+// (function () {
+//   var x = 11;
+
+//   (function random() {
+//     x++;
+//     console.log("hola soy x de nuevo", x); // NaN , random() function has functional scope, since x is declared and hoisted in the functional scope.
+//     var x = 21; 
+//   })();
+// })();
+
+// validX();
+// **************************************
+// what will be the output ?  // 2
+// console.log(0 || "" || 2 || undefined || true || falsе)
+
+// **************************************
+// console.log(str); //  cannot access it befor initialization
+// let str = "Hello";
+// **************************************
+// console.log(str); // ? str is not defined
+// var str = "Hello";
+// **************************************
+// what will be the output ?  // 1
+// console.log(true + false) 
+// **************************************
+// what will be the output ?  // 12
+// console.log([] + 1 + 2)
+// **************************************
+// what will be the output ?  // 1, 0
+// let count = 0;
+// function immediate() {
+//   if (count === 0) {
+//     let count = 1;
+//     console.log(count); // 1, 0
+//   }
+//   console.log(count); // ?
+// };
+
+// immediate();
+
+// **************************************
+// what will be the output ?  //  101, porque si hay desde la posicion 0 al 100 donde se insertò el 6, habrán 101
+// var arr = []
+// console.log(arr.length); 
+// arr[100] = 6;
+// console.log(arr.length); 
+
+// **************************************
+
+//In what order numbers will be put into console ( 1,4,3,2)
+// (function () {
+//   console.log(1);
+//   setTimeout(function () {
+//     console.log(2);
+//   }, 1000);
+//   setTimeout(function () {
+//     console.log(3);
+//   }, 0);
+//   console.log(4);
+// })();
+// **************************************
+//In what order numbers will be put into console 10,20
+
+var x = 30;
+var y = 30;
+ 
+function getClosure() {
+  var x = 10;
+  return function () {
+    console.log(x); // 10
+    console.log(y); // 20
+  };
 }
-
-(function () {
-  var x = 11;
-  console.log("hola soy x", x); // 11, X it has function scope
-})();
-
-(function () {
-  var x = 11;
-
-  (function random() {
-    x++;
-    console.log("hola soy x de nuevo", x); // NaN , random() function has functional scope, since x is declared and hoisted in the functional scope.
-    var x = 21;
-  })();
-})();
-
-validX();
+var closure = getClosure();
+var x = 20;
+var y = 20;
+closure();
 // **************************************
-
 // **************************************
-
-// **************************************
-
-// **************************************
-
-// **************************************
-
-// **************************************
-
 // **************************************

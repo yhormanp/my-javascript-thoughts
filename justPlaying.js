@@ -138,58 +138,108 @@
 // console.log(extractValues(input))
 
 // -------------------------
-const listOfroles = {
-  admin: "admin",
-  readOnly: "readonly",
+// const listOfroles = {
+//   admin: "admin",
+//   readOnly: "readonly",
+// };
+
+// const objUser = {
+//   roles: ["admin", "rolx2"],
+// };
+
+// const menuOptions = {
+//   manageCarrierCapsReadOnly: {
+//     name: "Manage Carrier Caps",
+//     url: "/report/readonly",
+//     // renderingMethod: ManageCarrierCapsReadOnlyLink,
+//     allowedRoles: [listOfroles.readOnly],
+//   },
+//   manageCarrierCapsAdmin: {
+//     name: "Manage Carrier Caps",
+//     url: "/report/admin",
+//     // renderingMethod: ManageCarrierCapsAdminLink,
+//     allowedRoles: [listOfroles.admin],
+//   },
+//   supportedCarriers: {
+//     name: "Supported carriers",
+//     url: "/report/supportedCarriers",
+//     // renderingMethod: StoreSupportedCarriersLink,
+//     allowedRoles: [listOfroles.admin, listOfroles.readOnly],
+//   },
+//   parcelDetails: {
+//     name: "Parcel Details",
+//     url: "/parcel-details",
+//     // renderingMethod: ParcelDetailsLink,
+//     allowedRoles: [ listOfroles.readOnly],
+//   },
+//   deliverySearch: {
+//     name: "Search Package Delivery",
+//     url: "/delivery-search",
+//     // renderingMethod: DeliverySearchLink,
+//     allowedRoles: [listOfroles.admin, listOfroles.readOnly],
+//   },
+// };
+
+// function validateRoles(user, menu) {
+//   const allowed = Object.keys(menu).map((option) => {
+//     // console.log ('check', menu[option])
+
+//      return menu[option].allowedRoles.some((role) => {
+//       return user.roles.includes(role);
+//     });
+//   });
+
+//   console.log('allowed links', allowed)
+// }
+
+// validateRoles(objUser, menuOptions);
+
+
+
+//*****************************
+// function newTransactions (transArr){
+//     const transObj={}
+//     transArr.forEach((currency)=>{
+//     !transObj[currency[0]]?
+//     (
+//     transObj[currency[0]]={
+//     buy:0,
+//     sell:0, 
+//     }
+    
+//     currency[1]==='buy'?transObj[currency[0]].buy+=currency[2]:transObj[currency[0]].sell+=currency[2]
+//     )
+//     :
+//     transObj[currency[0]][currency[1]]+=currency[2]
+//     })
+//        return transObj
+//     }
+//     console.log(newTransactions(transactions))
+
+
+
+
+//---------------------
+
+// function testing ({value }){
+//   console.log('hola ', value);
+//   return 2
+// }
+
+
+// function testing2 ( {apicall}){
+//   console.log('testin2', apicall())
+// }
+
+
+// testing2 ({apicall: ()=> testing({value: 'yhorman' })})
+
+
+const toEnUsDateString = (date) => {
+  return date.toLocaleDateString('sv');
 };
 
-const objUser = {
-  roles: ["admin", "rolx2"],
-};
 
-const menuOptions = {
-  manageCarrierCapsReadOnly: {
-    name: "Manage Carrier Caps",
-    url: "/report/readonly",
-    // renderingMethod: ManageCarrierCapsReadOnlyLink,
-    allowedRoles: [listOfroles.readOnly],
-  },
-  manageCarrierCapsAdmin: {
-    name: "Manage Carrier Caps",
-    url: "/report/admin",
-    // renderingMethod: ManageCarrierCapsAdminLink,
-    allowedRoles: [listOfroles.admin],
-  },
-  supportedCarriers: {
-    name: "Supported carriers",
-    url: "/report/supportedCarriers",
-    // renderingMethod: StoreSupportedCarriersLink,
-    allowedRoles: [listOfroles.admin, listOfroles.readOnly],
-  },
-  parcelDetails: {
-    name: "Parcel Details",
-    url: "/parcel-details",
-    // renderingMethod: ParcelDetailsLink,
-    allowedRoles: [ listOfroles.readOnly],
-  },
-  deliverySearch: {
-    name: "Search Package Delivery",
-    url: "/delivery-search",
-    // renderingMethod: DeliverySearchLink,
-    allowedRoles: [listOfroles.admin, listOfroles.readOnly],
-  },
-};
+const myDate = new Date();
 
-function validateRoles(user, menu) {
-  const allowed = Object.keys(menu).map((option) => {
-    // console.log ('check', menu[option])
-
-     return menu[option].allowedRoles.some((role) => {
-      return user.roles.includes(role);
-    });
-  });
-
-  console.log('allowed links', allowed)
-}
-
-validateRoles(objUser, menuOptions);
+console.log('testing date', toEnUsDateString(myDate))
