@@ -138,10 +138,10 @@
 // console.log(extractValues(input))
 
 // -------------------------
-// const listOfroles = {
-//   admin: "admin",
-//   readOnly: "readonly",
-// };
+// // const listOfroles = {
+// //   admin: "admin",
+// //   readOnly: "readonly",
+// // };
 
 // const objUser = {
 //   roles: ["admin", "rolx2"],
@@ -189,11 +189,91 @@
 //     });
 //   });
 
-//   console.log('allowed links', allowed)
-// }
+// //   console.log('allowed links', allowed)
+// // }
 
 // validateRoles(objUser, menuOptions);
 
+
+//-------------------------------------------
+
+function CityTraffic(strArr) {
+
+  // code goes here  
+  const adjacentCities = new Map();
+  strArr.forEach((value) => {
+    const info = value.split(':')
+    const population = info[0];
+    const otherCities = info[1].substring(1, info[1].length - 1).split(',')
+    adjacentCities.set(population, new Set(otherCities))
+  })
+
+  let reviewed = new Set();
+  let maxPopulation = 0;
+
+  const dfs = key => {
+    console.log('dfs called', key)
+    reviewed.add(key);
+    console.log('checking maxpop', maxPopulation)
+
+    console.log('checking neighbors', key, adjacentCities.get(key))
+    let closerCities = adjacentCities.get(key);
+
+
+    for (let city of closerCities) {
+      console.log('dependency city', city)
+      if (!reviewed.has(city)) {
+        console.log('city does not exists- visiting and adding', city)
+        maxPopulation += parseInt(city);
+
+        dfs(city);
+      } else {
+        console.log('city already visited')
+      }
+    }
+
+  }
+
+  let result = [];
+  let individualPath = [];
+  for (let [key, value] of adjacentCities.entries()) {
+
+    if (value.size > 1) {
+      console.log('checking several depency cities', key)
+      for (let city of value) {
+        console.log('testing', city)
+        // maxPopulation = parseInt(city)
+        dfs(city)
+        individualPath.push( parseInt(maxPopulation))
+        maxPopulation = 0;
+        reviewed = new Set()
+      }
+      // console.log('indi', individualPath)
+      maxPopulation = Math.max(...individualPath)
+
+      // console.log('individual path', individualPath)
+    } else if (value.size === 1) {
+      //iterate through each node to find it's neighbors
+      dfs(key);
+      // console.log('total found', maxPopulation)
+
+    }
+
+    const message = `${key}:${maxPopulation}`;
+    result.push(message);
+    maxPopulation = 0;
+    reviewed = new Set()
+
+  }
+
+  console.log('final result', result)
+  return result
+}
+
+
+// keep this function call here 
+console.log(CityTraffic(["1:[5]", "2:[5]", "3:[5]", "4:[5]", "5:[1,2,3,4]"]));
+// console.log(CityTraffic(["1:[5]", "2:[5,18]", "3:[5,12]", "4:[5]", "5:[1,2,3,4]", "18:[2]", "12:[3]"])); // EXPECTED OUTPUT: 1:44,2:25,3:30,4:41,5:20,12:33,18:27 >>
 
 
 //*****************************
