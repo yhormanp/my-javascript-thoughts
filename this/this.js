@@ -1,4 +1,10 @@
-// FUNCTION INVOCATION
+// GLOBAL CONTEXT
+/* in the Global  execution context, this refers to the  global object. */
+// console.log(this === window); // true
+
+
+
+// FUNCTION INVOCATION 
 /*
 In a function invocation, the execution context is the global object. (global -Nodejs, window -browser)
 this is undefined in a function invocation in strict mode
@@ -30,7 +36,7 @@ this is undefined in a function invocation in strict mode
 
 //     function calculate() {
 //       console.log(this === numbers) // false
-//       return this.numberA + this.numberB;
+//       return this.numberA + this.numberB; // NaN
 //     }
 //     return calculate();  // it's a function invocation
 //     // return calcular.call(this) // possible solution
@@ -63,7 +69,7 @@ this is undefined in a function invocation in strict mode
 // const myDog = {
 //   name: 'none',
 //   sayName() {
-//     console.log(this === myDog)
+//     console.log(this === myDog) // true
 //     return this.name;
 //   }
 // }
@@ -101,7 +107,7 @@ it will be callint the action as a function invocation
 // const myDog = {
 //   name: 'none',
 //   sayName() {
-//     console.log(this === myDog)
+//     console.log(this === myDog) // true
 //     return this.name;
 //   }
 // }
@@ -125,7 +131,8 @@ it will be callint the action as a function invocation
 // }
 
 // const myCat = new Pet('Cat', 4);
-// setTimeout(myCat.logInfo, 1000); //the undefined has undefined legs
+// myCat.logInfo(); //method invocation:  true,  teh Cat has 4 legs
+// setTimeout(myCat.logInfo, 1000); //false, the undefined has undefined legs
 
 /*
 Unfortunately the method is separated from its object when passed as a parameter: setTimout(myCat.logInfo)
@@ -444,26 +451,26 @@ Unfortunately the method is separated from its object when passed as a parameter
 */
 
 // guess the outpu of the following code
-const a = function(){
-  console.log(this); //global/window 
+// const a = function(){
+//   console.log(this); //global/window 
 
-  const b = {
-    func1: function(){
-      console.log(this);
-    }  
-  }
+//   const b = {
+//     func1: function(){
+//       console.log(this);
+//     }  
+//   }
 
-  const c = {
-    func2: ()=>{
-      console.log(this);
-    }
-  }
+//   const c = {
+//     func2: ()=>{
+//       console.log(this);
+//     }
+//   }
 
-  b.func1(); //b
-  c.func2(); //global/window
-}
+//   b.func1(); //b
+//   c.func2(); //global/window
+// }
 
-a();
+// a();
 
 /* 
 global/window object

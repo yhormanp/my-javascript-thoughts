@@ -138,10 +138,10 @@
 // console.log(extractValues(input))
 
 // -------------------------
-// const listOfroles = {
-//   admin: "admin",
-//   readOnly: "readonly",
-// };
+// // const listOfroles = {
+// //   admin: "admin",
+// //   readOnly: "readonly",
+// // };
 
 // const objUser = {
 //   roles: ["admin", "rolx2"],
@@ -189,8 +189,8 @@
 //     });
 //   });
 
-//   console.log('allowed links', allowed)
-// }
+// //   console.log('allowed links', allowed)
+// // }
 
 // validateRoles(objUser, menuOptions);
 
@@ -274,3 +274,52 @@ function CityTraffic(strArr) {
 // keep this function call here 
 console.log(CityTraffic(["1:[5]", "2:[5]", "3:[5]", "4:[5]", "5:[1,2,3,4]"]));
 // console.log(CityTraffic(["1:[5]", "2:[5,18]", "3:[5,12]", "4:[5]", "5:[1,2,3,4]", "18:[2]", "12:[3]"])); // EXPECTED OUTPUT: 1:44,2:25,3:30,4:41,5:20,12:33,18:27 >>
+
+
+//*****************************
+// function newTransactions (transArr){
+//     const transObj={}
+//     transArr.forEach((currency)=>{
+//     !transObj[currency[0]]?
+//     (
+//     transObj[currency[0]]={
+//     buy:0,
+//     sell:0, 
+//     }
+    
+//     currency[1]==='buy'?transObj[currency[0]].buy+=currency[2]:transObj[currency[0]].sell+=currency[2]
+//     )
+//     :
+//     transObj[currency[0]][currency[1]]+=currency[2]
+//     })
+//        return transObj
+//     }
+//     console.log(newTransactions(transactions))
+
+
+
+
+//---------------------
+
+// function testing ({value }){
+//   console.log('hola ', value);
+//   return 2
+// }
+
+
+// function testing2 ( {apicall}){
+//   console.log('testin2', apicall())
+// }
+
+
+// testing2 ({apicall: ()=> testing({value: 'yhorman' })})
+
+
+const toEnUsDateString = (date) => {
+  return date.toLocaleDateString('sv');
+};
+
+
+const myDate = new Date();
+
+console.log('testing date', toEnUsDateString(myDate))
