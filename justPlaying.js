@@ -194,87 +194,83 @@
 
 // validateRoles(objUser, menuOptions);
 
-
 //-------------------------------------------
 
-function CityTraffic(strArr) {
+// function CityTraffic(strArr) {
 
-  // code goes here  
-  const adjacentCities = new Map();
-  strArr.forEach((value) => {
-    const info = value.split(':')
-    const population = info[0];
-    const otherCities = info[1].substring(1, info[1].length - 1).split(',')
-    adjacentCities.set(population, new Set(otherCities))
-  })
+//   // code goes here
+//   const adjacentCities = new Map();
+//   strArr.forEach((value) => {
+//     const info = value.split(':')
+//     const population = info[0];
+//     const otherCities = info[1].substring(1, info[1].length - 1).split(',')
+//     adjacentCities.set(population, new Set(otherCities))
+//   })
 
-  let reviewed = new Set();
-  let maxPopulation = 0;
+//   let reviewed = new Set();
+//   let maxPopulation = 0;
 
-  const dfs = key => {
-    console.log('dfs called', key)
-    reviewed.add(key);
-    console.log('checking maxpop', maxPopulation)
+//   const dfs = key => {
+//     console.log('dfs called', key)
+//     reviewed.add(key);
+//     console.log('checking maxpop', maxPopulation)
 
-    console.log('checking neighbors', key, adjacentCities.get(key))
-    let closerCities = adjacentCities.get(key);
+//     console.log('checking neighbors', key, adjacentCities.get(key))
+//     let closerCities = adjacentCities.get(key);
 
+//     for (let city of closerCities) {
+//       console.log('dependency city', city)
+//       if (!reviewed.has(city)) {
+//         console.log('city does not exists- visiting and adding', city)
+//         maxPopulation += parseInt(city);
 
-    for (let city of closerCities) {
-      console.log('dependency city', city)
-      if (!reviewed.has(city)) {
-        console.log('city does not exists- visiting and adding', city)
-        maxPopulation += parseInt(city);
+//         dfs(city);
+//       } else {
+//         console.log('city already visited')
+//       }
+//     }
 
-        dfs(city);
-      } else {
-        console.log('city already visited')
-      }
-    }
+//   }
 
-  }
+//   let result = [];
+//   let individualPath = [];
+//   for (let [key, value] of adjacentCities.entries()) {
 
-  let result = [];
-  let individualPath = [];
-  for (let [key, value] of adjacentCities.entries()) {
+//     if (value.size > 1) {
+//       console.log('checking several depency cities', key)
+//       for (let city of value) {
+//         console.log('testing', city)
+//         // maxPopulation = parseInt(city)
+//         dfs(city)
+//         individualPath.push( parseInt(maxPopulation))
+//         maxPopulation = 0;
+//         reviewed = new Set()
+//       }
+//       // console.log('indi', individualPath)
+//       maxPopulation = Math.max(...individualPath)
 
-    if (value.size > 1) {
-      console.log('checking several depency cities', key)
-      for (let city of value) {
-        console.log('testing', city)
-        // maxPopulation = parseInt(city)
-        dfs(city)
-        individualPath.push( parseInt(maxPopulation))
-        maxPopulation = 0;
-        reviewed = new Set()
-      }
-      // console.log('indi', individualPath)
-      maxPopulation = Math.max(...individualPath)
+//       // console.log('individual path', individualPath)
+//     } else if (value.size === 1) {
+//       //iterate through each node to find it's neighbors
+//       dfs(key);
+//       // console.log('total found', maxPopulation)
 
-      // console.log('individual path', individualPath)
-    } else if (value.size === 1) {
-      //iterate through each node to find it's neighbors
-      dfs(key);
-      // console.log('total found', maxPopulation)
+//     }
 
-    }
+//     const message = `${key}:${maxPopulation}`;
+//     result.push(message);
+//     maxPopulation = 0;
+//     reviewed = new Set()
 
-    const message = `${key}:${maxPopulation}`;
-    result.push(message);
-    maxPopulation = 0;
-    reviewed = new Set()
+//   }
 
-  }
+//   console.log('final result', result)
+//   return result
+// }
 
-  console.log('final result', result)
-  return result
-}
-
-
-// keep this function call here 
-console.log(CityTraffic(["1:[5]", "2:[5]", "3:[5]", "4:[5]", "5:[1,2,3,4]"]));
-// console.log(CityTraffic(["1:[5]", "2:[5,18]", "3:[5,12]", "4:[5]", "5:[1,2,3,4]", "18:[2]", "12:[3]"])); // EXPECTED OUTPUT: 1:44,2:25,3:30,4:41,5:20,12:33,18:27 >>
-
+// // keep this function call here
+// console.log(CityTraffic(["1:[5]", "2:[5]", "3:[5]", "4:[5]", "5:[1,2,3,4]"]));
+// // console.log(CityTraffic(["1:[5]", "2:[5,18]", "3:[5,12]", "4:[5]", "5:[1,2,3,4]", "18:[2]", "12:[3]"])); // EXPECTED OUTPUT: 1:44,2:25,3:30,4:41,5:20,12:33,18:27 >>
 
 //*****************************
 // function newTransactions (transArr){
@@ -284,9 +280,9 @@ console.log(CityTraffic(["1:[5]", "2:[5]", "3:[5]", "4:[5]", "5:[1,2,3,4]"]));
 //     (
 //     transObj[currency[0]]={
 //     buy:0,
-//     sell:0, 
+//     sell:0,
 //     }
-    
+
 //     currency[1]==='buy'?transObj[currency[0]].buy+=currency[2]:transObj[currency[0]].sell+=currency[2]
 //     )
 //     :
@@ -296,9 +292,6 @@ console.log(CityTraffic(["1:[5]", "2:[5]", "3:[5]", "4:[5]", "5:[1,2,3,4]"]));
 //     }
 //     console.log(newTransactions(transactions))
 
-
-
-
 //---------------------
 
 // function testing ({value }){
@@ -306,20 +299,109 @@ console.log(CityTraffic(["1:[5]", "2:[5]", "3:[5]", "4:[5]", "5:[1,2,3,4]"]));
 //   return 2
 // }
 
-
 // function testing2 ( {apicall}){
 //   console.log('testin2', apicall())
 // }
 
-
 // testing2 ({apicall: ()=> testing({value: 'yhorman' })})
 
+// // // const toEnUsDateString = (date) => {
+// // //   return date.toLocaleDateString('sv');
+// // // };
 
-const toEnUsDateString = (date) => {
-  return date.toLocaleDateString('sv');
+// // // const myDate = new Date();
+
+// // // console.log('testing date', toEnUsDateString(myDate))
+
+///*************************** */
+
+// // const orgObject = { company: "XYZ Corp" };
+// // const carObject = { name: "Toyota" };
+// // const staff1 = Object.assign(carObject, orgObject);
+
+// // // const staff2 = Object.assign({}, orgObject, carObject);
+
+// // console.log('staff', staff1)
+///*************************** */
+
+// const cache = {
+//   hola: 'hi',
+//   yo: 'I',
+//   think: 'pensar',
+//   believe: 'creo',
+// };
+
+// function findingSpanishWord(value) {
+//   if (value in cache) {
+//     return cache[value];
+//   }
+//   return 'not found';
+// }
+
+// console.log(findingSpanishWord('think'));
+///*************************** */
+
+function Bird(name, color) {
+  this.name = name;
+  this.color = color;
+}
+
+Bird.prototype.eat = function () {
+  console.log(`I am ${this.name} and I am eating`);
 };
 
+const myBird = new Bird('mil', 'red');
+console.log(myBird);
+console.log(myBird.eat());
 
-const myDate = new Date();
+class Animal {
+  constructor(name, color) {
+    this.name = name;
+    this.color = color;
+  }
 
-console.log('testing date', toEnUsDateString(myDate))
+  // fly() {
+  //   console.log(`i am ${this.name} and I am flying`);
+  // }
+}
+
+Animal.prototype.fly = function () {
+  console.log(`i am ${this.name} and I am flying`);
+};
+
+const myNewAnimal = new Animal('pedro', 'green');
+
+console.log(myNewAnimal.fly());
+
+//************************** */
+const Persona = function (name) {
+  this.name = name;
+};
+
+Persona.prototype.sayName = function () {
+  console.log(`Hello my  name is ${this.name}`);
+};
+
+//checking inherited method
+const Persona1 = new Persona('yhor');
+Persona1.sayName();
+
+const Persona2 = new Persona('Andres');
+Persona2.sayName();
+
+function addAge() {
+  return { age: 34 };
+}
+const ex = {
+  name: 'tim',
+  lastname: 'burton',
+  ...addAge(),
+};
+
+console.log('ex', ex);
+
+
+
+const  miCoche = ['miHonda', 2, "Buen estado", "comprado 1997"];
+const  nuevos = miCoche.slice(-3,-1);
+console.log('slice', nuevos);
