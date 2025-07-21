@@ -341,67 +341,73 @@
 // console.log(findingSpanishWord('think'));
 ///*************************** */
 
-function Bird(name, color) {
-  this.name = name;
-  this.color = color;
-}
+// function Bird(name, color) {
+//   this.name = name;
+//   this.color = color;
+// }
 
-Bird.prototype.eat = function () {
-  console.log(`I am ${this.name} and I am eating`);
-};
+// Bird.prototype.eat = function () {
+//   console.log(`I am ${this.name} and I am eating`);
+// };
 
-const myBird = new Bird('mil', 'red');
-console.log(myBird);
-console.log(myBird.eat());
+// const myBird = new Bird('mil', 'red');
+// console.log(myBird);
+// console.log(myBird.eat());
 
-class Animal {
-  constructor(name, color) {
-    this.name = name;
-    this.color = color;
-  }
+// class Animal {
+//   constructor(name, color) {
+//     this.name = name;
+//     this.color = color;
+//   }
 
-  // fly() {
-  //   console.log(`i am ${this.name} and I am flying`);
-  // }
-}
+//   // fly() {
+//   //   console.log(`i am ${this.name} and I am flying`);
+//   // }
+// }
 
-Animal.prototype.fly = function () {
-  console.log(`i am ${this.name} and I am flying`);
-};
+// Animal.prototype.fly = function () {
+//   console.log(`i am ${this.name} and I am flying`);
+// };
 
-const myNewAnimal = new Animal('pedro', 'green');
+// const myNewAnimal = new Animal('pedro', 'green');
 
-console.log(myNewAnimal.fly());
+// console.log(myNewAnimal.fly());
 
-//************************** */
-const Persona = function (name) {
-  this.name = name;
-};
+// //************************** */
+// const Persona = function (name) {
+//   this.name = name;
+// };
 
-Persona.prototype.sayName = function () {
-  console.log(`Hello my  name is ${this.name}`);
-};
+// Persona.prototype.sayName = function () {
+//   console.log(`Hello my  name is ${this.name}`);
+// };
 
-//checking inherited method
-const Persona1 = new Persona('yhor');
-Persona1.sayName();
+// //checking inherited method
+// const Persona1 = new Persona('yhor');
+// Persona1.sayName();
 
-const Persona2 = new Persona('Andres');
-Persona2.sayName();
+// const Persona2 = new Persona('Andres');
+// Persona2.sayName();
 
-function addAge() {
-  return { age: 34 };
-}
-const ex = {
-  name: 'tim',
-  lastname: 'burton',
-  ...addAge(),
-};
+// function addAge() {
+//   return { age: 34 };
+// }
+// const ex = {
+//   name: 'tim',
+//   lastname: 'burton',
+//   ...addAge(),
+// };
 
-console.log('ex', ex);
+// console.log('ex', ex);
 
 
 
-const  miCoche = ['miHonda', 2, "Buen estado", "comprado 1997"];
-const  nuevos = miCoche.slice(-3,-1);
-console.log('slice', nuevos);
+// const  miCoche = ['miHonda', 2, "Buen estado", "comprado 1997"];
+// const  nuevos = miCoche.slice(-3,-1);
+// console.log('slice', nuevos);
+
+
+
+
+// having the array  list, where each object has a property called colId, try to arrange the array list based on another
+// array of strings that will provide the order or the records that will be defined for the  array list
