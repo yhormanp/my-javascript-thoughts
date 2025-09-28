@@ -45,11 +45,32 @@ var canJump = function (nums) {
       return false;
     }
     // Update the maximum reachable index
-    console.log('validating max reacheable index:', i, maxReach, ':', i + nums[i]);
+    console.log(
+      'validating max reacheable index:',
+      i,
+      'maxReach:',
+      maxReach,
+      ' i + nums:',
+      i + nums[i]
+    );
 
     maxReach = Math.max(maxReach, i + nums[i]);
+    console.log(
+      'comparing values in maxreach:',
+      i + nums[i],
+      maxReach,
+      i + nums[i] > maxReach
+    );
     // If we can reach the end, return true
-    console.log('validating reaching the ed', maxReach, ':', len - 1);
+    if (i + nums[i] > maxReach) {
+      console.log('new maxReah has been set:', maxReach);
+    }
+    console.log(
+      'validating reaching the end, maxReach:',
+      maxReach,
+      ',leng-1:',
+      len - 1
+    );
 
     if (maxReach >= len - 1) {
       return true;
@@ -60,10 +81,33 @@ var canJump = function (nums) {
   return false;
 };
 
+// solution proposed by leetcode
+// // /**
+// //  * @param {number[]} nums
+// //  * @return {boolean}
+// //  */
+// // var canJump = function(nums) {
+// //     let maxReach = 0;
+// //     for (let i = 0; i < nums.length; i++) {
+// //         if (i > maxReach) {
+// //             return false;
+// //         }
+// //         maxReach = Math.max(maxReach, i + nums[i]);
+
+// //         if (maxReach >= nums.length - 1) {
+// //                 return true;
+// //         }
+// //     }
+
+// //     return false;
+// // };
 //SCENARIO 1
 nums = [2, 3, 1, 1, 4];
 console.log('scenario 1: ', canJump(nums));
 
-//SCENARIO 1
+//SCENARIO 2
 nums = [3, 2, 1, 0, 4];
 console.log('scenario 2: ', canJump(nums));
+
+nums= [7,0,9,6,9,6,1,7,9,0,1,2,9,0,3]
+console.log('scenario 3: ', canJump(nums));

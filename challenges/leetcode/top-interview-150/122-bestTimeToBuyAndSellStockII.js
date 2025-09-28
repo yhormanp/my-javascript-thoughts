@@ -30,44 +30,54 @@
  */
 var maxProfit = function (prices) {
   let maxProfit = 0;
-  let buyPrice = prices[0];
-  // let qtyStocks = 0;
 
   for (let i = 1; i < prices.length; i++) {
-    let sellPrice = prices[i];
-    if (sellPrice - buyPrice > 0) {
-      //need to sell
-      maxProfit += sellPrice - buyPrice;
-      console.log('max profit add', sellPrice, buyPrice, maxProfit);
-      buyPrice = prices[i];
-      continue;
+    if (prices[i] > prices[i - 1]) {
+      maxProfit += prices[i] - prices[i - 1];
     }
-    buyPrice = sellPrice < buyPrice ? sellPrice : buyPrice;
+  }
+
+      return maxProfit;
+};
+
+// solution proposed by leetcode
+var maxProfit = function (prices) {
+  let hasStock = -1,
+    maxProfit = 0;
+
+  for (let i = 0; i < prices.length; i++) {
+    if (hasStock < 0) {
+      // need to find good price to buy
+      if (prices[i] < prices[i + 1]) {
+        //buy
+        hasStock = i;
+      }
+    } else {
+      //find price to sell
+      if (i + 1 >= prices.length || prices[i] > prices[i + 1]) {
+        //sell
+        maxProfit += prices[i] - prices[hasStock];
+        hasStock = -1;
+      }
+    }
   }
 
   return maxProfit;
 };
 
-// solution proposed by leetcode
-var maxProfit = function(prices) {
-    let hasStock = -1, maxProfit = 0
+// option 3
+// var maxProfit = function (prices) {
 
-    for(let i=0;i<prices.length;i++) {
-        if(hasStock < 0) { // need to find good price to buy 
-            if(prices[i] < prices[i+1]) { //buy 
-                hasStock = i
-            }
-        } else { //find price to sell 
-            if(i+1 >= prices.length || prices[i] > prices[i+1]){ //sell
-                maxProfit += prices[i] - prices[hasStock]
-                hasStock = -1
-            } 
-        }
-    }
+// let profit = 0
 
-    return maxProfit
-};
+//     for ( let i = 1; i < prices.length; i++) {
+//         if (prices[i] >= prices[i-1]) {
+//             profit += prices[i] - prices[i-1]
+//         }
+//     }
+//     return profit;
 
+// };
 
 //scenario 1
 prices = [7, 1, 5, 3, 6, 4];
